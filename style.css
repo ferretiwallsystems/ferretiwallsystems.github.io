@@ -8,6 +8,7 @@
   --silver: #cdcdcd;
   --steel: #606060;
   --yellow: #f6c814;
+  --gold: #dcb25c;
   --ink: #18191d;
   --radius: 14px;
   --gutter: 20px;
@@ -103,13 +104,20 @@ ul { list-style: none; }
 .band a + a { border-top: 1px solid rgba(24, 25, 29, .16); }
 .band a:focus-visible { outline-color: var(--ink); outline-offset: -2px; }
 
+.band-img,
 .band-ico {
-  display: grid; place-items: center; flex: none;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--ink); color: var(--yellow);
+  flex: none;
+  width: 44px; height: 44px; border-radius: 50%;
   transition: transform .2s ease;
 }
+/* vector icon dressed to match the gold-ringed contact icon */
+.band-ico {
+  display: grid; place-items: center;
+  background: #050505; color: var(--gold);
+  box-shadow: inset 0 0 0 1.5px var(--gold);
+}
 .band-ico .i { width: 19px; height: 19px; stroke-width: 2; }
+.band a:hover .band-img,
 .band a:hover .band-ico { transform: scale(1.08); }
 
 .band-num {
@@ -165,17 +173,22 @@ ul { list-style: none; }
 .services .label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
 .services ul {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;
-  margin-top: 14px;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+  margin-top: 20px;
 }
 .services li {
-  display: flex; align-items: center; gap: 12px;
-  padding: 16px 14px;
-  border: 1px solid var(--line); border-radius: var(--radius);
-  background: var(--surface);
-  font-size: 14px; font-weight: 600; color: var(--text);
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  text-align: center;
+  color: var(--silver);
+  font-size: 10.5px; font-weight: 500; line-height: 1.6;
+  letter-spacing: .16em; text-transform: uppercase;
 }
-.services li .i { color: var(--yellow); }
+.services .nowrap { white-space: nowrap; }
+.services img {
+  width: clamp(76px, 24vw, 100px); height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 24px rgba(220, 178, 92, .16);
+}
 
 /* ---------- License ---------- */
 .license {
@@ -271,5 +284,5 @@ footer {
 @media (max-width: 359px) {
   :root { --gutter: 16px; }
   .action { font-size: 11px; }
-  .services li { gap: 10px; padding: 14px 12px; }
+  .services li { letter-spacing: .08em; }
 }
